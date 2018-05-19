@@ -1,5 +1,5 @@
 # Miknn
 
 ```r
-devtools::install_github("dbrooke/miknn")
+devtools::install_github("dbrookeUAB/miknn")
 ```
