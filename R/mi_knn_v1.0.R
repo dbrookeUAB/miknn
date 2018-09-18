@@ -13,12 +13,14 @@ mi_knn_v1.0 <- function(df, k, var.c, var.d, id) {
   require(purrr)
   require(miknn)
   Rcpp::sourceCpp("src/knn_dist.cpp")
-  df <- df[order(df[[var.c]]), ]
-  df <- df[!duplicated(df[[id]]), ]
+  df <- df[ordered(df[[var.c]]), ]
+
   df <- df[!is.na(df[[var.c]]), ]
+  
   N = length(df[[var.c]])
   k = as.integer(k)
   distance = vector(length = N)
+  m= vector(length = N)
   df2 <- df %>% inner_join(df %>% group_by_at(var.d) %>% mutate(N_x = n()) %>% 
                              group_by_at(c(var.d, "N_x")) %>% summarise_at(vars(var.c), 
                                                                            .funs = c(c_x = n_distinct)), by = var.d)
@@ -46,7 +48,8 @@ mi_knn_v1.0 <- function(df, k, var.c, var.d, id) {
     temp_vec <- as.numeric(z[[var.c]][start:end])
     distance[i] = knn_dist(temp_vec, k)[k + 1]
   }
-  m <- neighbors(df[[var.c]], distance)
+  df = cbind(df, distance)
+  m <- neighbors(df[[var.c]], df$distance)
   info <- cbind(df2, distance, m)
   return(info)
 }

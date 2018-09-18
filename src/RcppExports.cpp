@@ -5,6 +5,18 @@
 
 using namespace Rcpp;
 
+// knn_dist_2
+double knn_dist_2(NumericVector y, int knn);
+RcppExport SEXP _miknn_knn_dist_2(SEXP ySEXP, SEXP knnSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< int >::type knn(knnSEXP);
+    rcpp_result_gen = Rcpp::wrap(knn_dist_2(y, knn));
+    return rcpp_result_gen;
+END_RCPP
+}
 // knn_dist
 NumericVector knn_dist(NumericVector y, int k);
 RcppExport SEXP _miknn_knn_dist(SEXP ySEXP, SEXP kSEXP) {
@@ -31,6 +43,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_miknn_knn_dist_2", (DL_FUNC) &_miknn_knn_dist_2, 2},
     {"_miknn_knn_dist", (DL_FUNC) &_miknn_knn_dist, 2},
     {"_miknn_neighbors", (DL_FUNC) &_miknn_neighbors, 2},
     {NULL, NULL, 0}

@@ -13,5 +13,5 @@ mi_group <- function(df, k,  var.d){
   
   df %>% group_by_at(vars(one_of(var.d))) %>%
     summarise("I" = {
-      digamma(N) - mean(digamma(N_x)) + digamma(k)  - mean(digamma(m))})
+      digamma(N) -mean(digamma(N_x)) + digamma(k)  - mean(digamma(m))})
 }
