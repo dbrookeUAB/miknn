@@ -1,3 +1,5 @@
 useDynLib(miknn, .registration=TRUE)
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp, evalCpp)
+import(data.table)
+

@@ -1,4 +1,4 @@
-#' Mutual Information Calculation
+#' Mutual Information Calculation (fast)
 #'
 #' @param k
 #' @param var.c
@@ -10,8 +10,7 @@
 #' @export
 #'
 #' @examples
-mi_knn <- function(dt, var.d, var.c, k = NULL, 
-                   warnings = TRUE, FORCE = FALSE, global = FALSE, quite = FALSE) {
+mi_knn_list <- function(dt, var.d, var.c, k = NULL,  warnings = TRUE, FORCE = FALSE, global = FALSE) {
   dt<- as.data.table(dt)
   df <- copy(dt)
   
@@ -20,10 +19,8 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
   num_zeros <- sum(dt[[var.c]] == 0)
   
   if(is.null(k)){
-    k <- .kmax(df, var.d, var.c)    # determine the highest possible k
-    if(!quite){
-      message(paste("Using k =", k))
-    } 
+    k <- .kmax(df, var.d, var.c) -1     # determine the highest possible k
+    message(paste("Using k =", k))
   }
   
   if(num_zeros>0){
@@ -44,7 +41,7 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
   
   # checking if k was set to a value larger than the smallest group size
   if (nrow(df[, .(N_x = unique(N_x)), var.d][N_x < k]) != 0 & !FORCE) { 
-    stop("group smaller than k: decrease k, consider setting k = NULL, or set FORCE = TRUE", call. = FALSE)
+    stop("group smaller than k: decrease k or consider setting k = NULL", call. = FALSE)
   }
   
   # warning message for the number of data points equal to 0
@@ -109,7 +106,7 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
     df_final <- df[,  digamma(n) - mean(digamma(N_x)) + digamma(k) - mean(digamma(m))]
   }
   
+  result <- list(group.mi = df_final, k = k, distance = data.table(df$distance), m = data.table(df$m))
   
-  
-  return(df_final)
+  return(result)
 }
