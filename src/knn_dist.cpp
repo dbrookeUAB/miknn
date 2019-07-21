@@ -60,26 +60,31 @@ NumericVector kVector(NumericVector w, int knn){
 
 // [[Rcpp::export(.neighbors)]]
 NumericVector neighbors(NumericVector y, NumericVector x){
-  
   int n = y.size();
-  
-  
   NumericVector z = clone(y);
-  
   for(int j = 0; j < n; ++j){
     int total = 0;
     double low = y[j]-x[j];
     double high = y[j]+x[j];
-    
-    for(int i = 0; i < n; ++i){
-      if( y[i] <= high && y[i] >=low ) {
-        total += 1;
-      } 
+    int i = 1;
+    while(y[j-i] >=low && y[j+i]<=high && j-i>=0 && j+i <n) {
+      ++i;
+      total = total + 2;
     }
-    z[j] = total -1;
+    int down = i;
+    while(y[j-down] >=low && j-down>=0) {
+      ++total;
+      ++down;
+    }
+    int up = i;
+    while(y[j+up] <=high && j+up<n) {
+      ++total;
+      ++up;
+    }
+    z[j] = total;
   }
   return z;
-  
-  
 }
+
+
 

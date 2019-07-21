@@ -19,7 +19,7 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
   num_zeros <- sum(df[[var.c]] == 0)
   
   if(is.null(k)){
-    k <- miknn::.kmax(df, var.d, var.c)    # determine the highest possible k
+    k <- .kmax(df, var.d, var.c)    # determine the highest possible k
     if(!quite){message(paste("Using k =", k))}}
   
   if(num_zeros>0){
@@ -42,8 +42,8 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
                   num_not_zeros,"data points"))}
   
   # distance to kth nearest neighbor ----------------------------------------
-  df[,distance:= miknn:::.kVector(get(var.c), k), var.d]
-  df$m <- miknn:::.neighbors(df[[var.c]], df[['distance']])
+  df[,distance:= .kVector(get(var.c), k), var.d]
+  df$m <- .neighbors(df[[var.c]], df[['distance']])
   
   # mutual information calculation ------------------------------------------
   if(!global){
