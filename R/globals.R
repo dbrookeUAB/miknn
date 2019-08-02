@@ -1,0 +1,1 @@
+utils::globalVariables(c("N_x", ".", "distance","m"))
