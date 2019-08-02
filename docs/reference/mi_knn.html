@@ -164,13 +164,47 @@
 #&gt; 11092: TCGA-CHOL TCGA-ZU-A8S4-11A-11R-A41I-07   8165.676    0.00000
 #&gt; 11093: TCGA-CESC TCGA-ZX-AA5X-01A-11R-A42T-07  26487.175  128.18321</div><div class='input'>
 <span class='co'># basic example using k = 10</span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in .kVector(get(var.c), k): object '_miknn_kVector' not found</span></div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.3253909</div><div class='input'>
 <span class='co'># the function can decide the optimum k</span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; <span class='error'>Error in .kVector(get(var.c), k): object '_miknn_kVector' not found</span></div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3270684</div><div class='input'>
 <span class='co'># set global = FALSE to get the specific MI for each levels,  </span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; <span class='error'>Error in .kVector(get(var.c), k): object '_miknn_kVector' not found</span></div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt;       project           I
+#&gt;  1:  TCGA-LGG 1.034932598
+#&gt;  2: TCGA-SARC 0.396460042
+#&gt;  3: TCGA-LAML 0.763923231
+#&gt;  4: TCGA-KIRC 0.230196889
+#&gt;  5:  TCGA-GBM 0.413664786
+#&gt;  6: TCGA-LIHC 1.072847620
+#&gt;  7:  TCGA-ACC 0.164198321
+#&gt;  8: TCGA-PCPG 0.446545949
+#&gt;  9: TCGA-SKCM 0.415979893
+#&gt; 10: TCGA-LUAD 0.095703524
+#&gt; 11: TCGA-STAD 0.275655864
+#&gt; 12: TCGA-BLCA 0.277697236
+#&gt; 13: TCGA-LUSC 0.207872674
+#&gt; 14: TCGA-MESO 0.004023886
+#&gt; 15: TCGA-KIRP 0.248888976
+#&gt; 16: TCGA-BRCA 0.162451328
+#&gt; 17: TCGA-CHOL 0.473926908
+#&gt; 18: TCGA-READ 0.267617116
+#&gt; 19:  TCGA-UCS 0.018002765
+#&gt; 20: TCGA-UCEC 0.196090020
+#&gt; 21: TCGA-KICH 0.497103676
+#&gt; 22: TCGA-DLBC 0.494721088
+#&gt; 23: TCGA-ESCA 0.043721798
+#&gt; 24: TCGA-HNSC 0.308234196
+#&gt; 25: TCGA-CESC 0.079623854
+#&gt; 26: TCGA-COAD 0.147225615
+#&gt; 27: TCGA-TGCT 0.257127782
+#&gt; 28: TCGA-PAAD 0.183207432
+#&gt; 29: TCGA-PRAD 0.198873155
+#&gt; 30:   TCGA-OV 0.086728308
+#&gt; 31: TCGA-THYM 0.257791461
+#&gt; 32:  TCGA-UVM 0.347631099
+#&gt; 33: TCGA-THCA 0.727007615
+#&gt;       project           I</div><div class='input'>
 <span class='co'># generating a plot for specific MI</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; <span class='error'>Error in .kVector(get(var.c), k): object '_miknn_kVector' not found</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res</span>)</div><div class='output co'>#&gt; <span class='error'>Error in plot(res): object 'res' not found</span></div><div class='input'>
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>res</span>)</div><div class='img'><img src='mi_knn-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
