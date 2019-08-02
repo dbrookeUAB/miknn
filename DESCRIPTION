@@ -1,13 +1,13 @@
 Package: miknn
 Type: Package
-Title: Mutual Information between continuous and discrete variables
+Title: Mutual Information between Discrete and Continuous Data Sets
 Version: 1.0
 Date: 2018-05-02
 Author: Dewey Brooke
 Maintainer: Dewey Brooke <deweybrooke@gmail.com>
-Description: One paragraph description of what the package does as one or more full
-          sentences.
+Description: Calculating mutual information between discrete and continuous data sets using kth nearest neighbor algorithm. 
 License: GPL (>= 2)
-Imports: Rcpp (>= 0.12.16), data.table
-Depends: data.table
+Imports: Rcpp (>= 0.12.16), data.table, progress
 LinkingTo: Rcpp
+LazyData: true
+RoxygenNote: 6.1.1
