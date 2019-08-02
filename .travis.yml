@@ -1,0 +1,15 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+warnings_are_errors: false
+before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+before_install: R -e 'source("https://install-github.me/r-lib/remotes")'
+deploy:
+  provider: script
+  script: Rscript -e 'pkgdown::deploy_site_github()'
+  skip_cleanup: true
+language: R
+cache: packages
+r_packages:
+  - covr
+
+after_success:
+  - Rscript -e 'library(covr); codecov()'
