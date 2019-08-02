@@ -1,6 +1,7 @@
 # miknn
 
 <!-- badges: start -->
+https://travis-ci.org/dbrookeUAB/miknn.svg?branch=master
 <!-- badges: end -->
 
 The goal of miknn is to ...
