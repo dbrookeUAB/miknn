@@ -1,11 +1,11 @@
-#' Mutual Information Calculation (fast)
+#' Faster Mutual Information Calculation (experimental)
 #'
-#' @param k
-#' @param var.c
-#' @param DT 
-#' @param warnings 
-#' @param var.d
-#'
+#' @param df a data.frame object
+#' @param var.d  the name of the discrete variable in quotations 
+#' @param var.c  the name of the continuouse variable in quotations
+#' @param k  the number of neighbors for MI calculation. 
+#' @param output  set to 'raw' to get the I calculated for each point, or 'global' for globa MI. 
+#' @import data.table
 #' @return
 #' @export
 #'
@@ -32,6 +32,7 @@ mi_knn.fast <- function(df, var.d, var.c, k, output = "default") {
     return(result)
   } else {
     DT[,I:=digamma(n)-digamma(N_x)+digamma(k)-digamma(m)][]
+    attr(DT,"k") <- k
     return(DT)
   }
 }

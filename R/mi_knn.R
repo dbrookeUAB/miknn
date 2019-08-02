@@ -1,17 +1,41 @@
 #' Mutual Information Calculation
 #'
-#' @param k
-#' @param var.c
-#' @param dt 
-#' @param warnings 
-#' @param var.d
-#'
+#' @param dt a data.frame object
+#' @param var.d  the name of the discrete variable in quotations 
+#' @param var.c  the name of the continuouse variable in quotations
+#' @param k  the number of neighbors for MI calculation. 
+#' @param warnings  set to FALSE to hide warnings
+#' @param FORCE  set to TRUE continues despite not using an optimum k
+#' @param global set to FALSE to get specific MI
+#' @param quite  set to TRUE to prevent messages being displayed to the console
+#' @import data.table
+#' @importFrom Rcpp evalCpp
+#' @useDynLib miknn, .registration=TRUE
 #' @return
 #' @export
 #'
 #' @examples
+#' library(miknn)
+#' 
+#' #TCGA data
+#' data("gene_exp",package = "miknn")
+#' gene_exp
+#' 
+#' # basic example using k = 10
+#' mi_knn(dt = gene_exp, var.d = "project", k = 10, var.c = "CCND1")
+#' 
+#' # the function can decide the optimum k
+#' mi_knn(dt = gene_exp, var.d = "project", var.c = "CCND1")
+#' 
+#' # set global = FALSE to get the specific MI for each levels,  
+#' mi_knn(dt = gene_exp, var.d = "project", var.c = "CCND1", global = FALSE)
+#' 
+#' # generating a plot for specific MI
+#' res <- mi_knn(dt = gene_exp, var.d = "project", var.c = "CCND1", global = FALSE)
+#' plot(res)
+#' 
 mi_knn <- function(dt, var.d, var.c, k = NULL, 
-                    warnings = TRUE, FORCE = FALSE, global = FALSE, quite = FALSE) {
+                    warnings = TRUE, FORCE = TRUE, global = TRUE, quite = FALSE) {
   df <- as.data.table(copy(dt))
   setkeyv(df, var.c)
   
@@ -49,9 +73,45 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
   if(!global){
     df_final <-
       df[, .(I = digamma(n) - mean(digamma(N_x)) + digamma(k) - mean(digamma(m))), var.d]
+    class(df_final) <- c("specific_mi",class(df_final))
   } else {
     df_final <- df[,  digamma(n) - mean(digamma(N_x)) + digamma(k) - mean(digamma(m))]
+    class(df_final) <- "global_mi"
   }
+  base::attr(df_final,"k") <- k
   
   return(df_final)
 }
+
+#' print.global_mi
+#'
+#' @param x an mi result
+#' @param ... For the "function" method of plot, ... can include any of the other arguments of curve, except expr.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+print.global_mi <- function(x,...){
+  base::attributes(x) <- NULL
+  base::print(x,...)
+}
+  
+#' plot.specific_mi
+#'
+#' @param x  a result from mi_knn(dt, var.d,var.d, global = FALSE)
+#' @param ... For the "function" method of plot, ... can include any of the other arguments of curve, except expr.
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot.specific_mi <- function(x,...){
+  graphics::par(mar=c(5,8,4,2)) # increase y-axis margin.
+  graphics::par(las=2)
+  x<- x[base::order(x[[1]])]
+  graphics::barplot(x[,I],names  = x[[1]],
+          cex.names=0.8, ylab = "Mutual Information (bits)",...)
+}
+  
+  
