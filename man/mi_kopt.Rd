@@ -4,7 +4,7 @@
 \alias{mi_kopt}
 \title{Determine the Optimum K}
 \usage{
-mi_kopt(dt, var.d, var.c, k.series, global = TRUE)
+mi_kopt(dt, var.d, var.c, global = TRUE, returnK = FALSE)
 }
 \arguments{
 \item{dt}{a data.frame object}
@@ -13,9 +13,9 @@ mi_kopt(dt, var.d, var.c, k.series, global = TRUE)
 
 \item{var.c}{the name of the continuouse variable in quotations}
 
-\item{k.series}{a vector of integers to test}
-
 \item{global}{set as TRUE by default. Set to FALSE for specific MI}
+
+\item{k.series}{a vector of integers to test}
 }
 \description{
 Determine the Optimum K
@@ -24,7 +24,6 @@ Determine the Optimum K
 library(miknn)
 
 # determining I for a series of k
-k.series <- 3:40
-mi_kopt(iris, "Species","Sepal.Length", k.series, global = FALSE)
+mi_kopt(iris, "Species","Sepal.Length", global = FALSE)
 
 }
