@@ -105,7 +105,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='no'>k.series</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>returnK</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -123,12 +123,12 @@
       <td><p>the name of the continuouse variable in quotations</p></td>
     </tr>
     <tr>
-      <th>k.series</th>
-      <td><p>a vector of integers to test</p></td>
-    </tr>
-    <tr>
       <th>global</th>
       <td><p>set as TRUE by default. Set to FALSE for specific MI</p></td>
+    </tr>
+    <tr>
+      <th>returnK</th>
+      <td><p>set as TRUE to return the 'optimal' k</p></td>
     </tr>
     </table>
     
@@ -137,47 +137,7 @@
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>miknn</span>)
 
 <span class='co'># determining I for a series of k</span>
-<span class='no'>k.series</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>:<span class='fl'>40</span>
-<span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='no'>k.series</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;      k    setosa   versicolor virginica
-#&gt;  1:  3 0.2881540 -0.140780668 0.1577629
-#&gt;  2:  4 0.3785904 -0.003030905 0.2886906
-#&gt;  3:  5 0.3768223 -0.137237213 0.2984398
-#&gt;  4:  6 0.5768223 -0.050051371 0.3000518
-#&gt;  5:  7 0.5883192  0.088622553 0.3256999
-#&gt;  6:  8 0.3667360  0.109475773 0.3057993
-#&gt;  7:  9 0.4531073  0.169644038 0.2902938
-#&gt;  8: 10 0.5019491  0.121563624 0.2917459
-#&gt;  9: 11 0.4202266  0.120678036 0.3452314
-#&gt; 10: 12 0.4544831  0.162716977 0.3934511
-#&gt; 11: 13 0.4954817  0.171291286 0.3460579
-#&gt; 12: 14 0.5446761  0.227789240 0.3772630
-#&gt; 13: 15 0.6103903  0.201195465 0.3737294
-#&gt; 14: 16 0.5585791  0.168909857 0.4225471
-#&gt; 15: 17 0.5907246  0.226238739 0.4375466
-#&gt; 16: 18 0.6495481  0.246513618 0.4186227
-#&gt; 17: 19 0.6559885  0.265112546 0.4223473
-#&gt; 18: 20 0.5852429  0.198957332 0.4274479
-#&gt; 19: 21 0.6352429  0.224173193 0.4610030
-#&gt; 20: 22 0.6250468  0.252585218 0.4009233
-#&gt; 21: 23 0.6317048  0.222417326 0.4133951
-#&gt; 22: 24 0.6493227  0.248821985 0.4279997
-#&gt; 23: 25 0.6630183  0.260019661 0.4402461
-#&gt; 24: 26 0.7030183  0.224121015 0.4030181
-#&gt; 25: 27 0.7209721  0.262582553 0.3860456
-#&gt; 26: 28 0.7052370  0.289228633 0.4033109
-#&gt; 27: 29 0.7039978  0.246776877 0.4224146
-#&gt; 28: 30 0.7024721  0.255830900 0.4491945
-#&gt; 29: 31 0.6788791  0.261605007 0.4272300
-#&gt; 30: 32 0.7030251  0.272122547 0.4022516
-#&gt; 31: 33 0.7303603  0.275068848 0.3994315
-#&gt; 32: 34 0.7252995  0.266289258 0.3955081
-#&gt; 33: 35 0.7418016  0.269087334 0.4127543
-#&gt; 34: 36 0.6977006  0.231143568 0.4178660
-#&gt; 35: 37 0.7254784  0.258921346 0.4294361
-#&gt; 36: 38 0.7179139  0.259246481 0.3813227
-#&gt; 37: 39 0.7200867  0.210870783 0.3518103
-#&gt; 38: 40 0.6729706  0.221324302 0.3639462
-#&gt;      k    setosa   versicolor virginica</div><div class='input'>
+<span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] 35</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
