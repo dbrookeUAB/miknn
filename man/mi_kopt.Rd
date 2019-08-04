@@ -15,7 +15,7 @@ mi_kopt(dt, var.d, var.c, global = TRUE, returnK = FALSE)
 
 \item{global}{set as TRUE by default. Set to FALSE for specific MI}
 
-\item{k.series}{a vector of integers to test}
+\item{returnK}{set as TRUE to return the 'optimal' k}
 }
 \description{
 Determine the Optimum K
@@ -24,6 +24,6 @@ Determine the Optimum K
 library(miknn)
 
 # determining I for a series of k
-mi_kopt(iris, "Species","Sepal.Length", global = FALSE)
+mi_kopt(iris, "Species","Sepal.Length", global = TRUE)
 
 }

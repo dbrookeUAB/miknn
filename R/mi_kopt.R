@@ -3,8 +3,8 @@
 #' @param dt a data.frame object
 #' @param var.d  the name of the discrete variable in quotations 
 #' @param var.c  the name of the continuouse variable in quotations
-#' @param k.series a vector of integers to test
 #' @param global  set as TRUE by default. Set to FALSE for specific MI
+#' @param returnK  set as TRUE to return the 'optimal' k
 #'
 #' @return
 #' @export
@@ -14,12 +14,12 @@
 #' library(miknn)
 #' 
 #' # determining I for a series of k
-#' mi_kopt(iris, "Species","Sepal.Length", global = FALSE)
+#' mi_kopt(iris, "Species","Sepal.Length", global = TRUE)
 #' 
 mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE){
   suppressWarnings({
-    
-    k.series <- c(1:dt[,.N, var.d][which.min(N),N-1])
+    dt <- as.data.table(copy(dt))
+    k.series <- c(1:dt[,.N, var.d][which.min(get("N")),get("N")]-1)
     pb <- progress::progress_bar$new(
       format = ":percent k = :k [:bar] :elapsed | eta: :eta",
       total = length(k.series),    # 100 
@@ -48,10 +48,10 @@ mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE){
   })
   class(result) <- c("mi_kopt",class(result))
   
-  if(!returnK&global){
+  if(!returnK&!global){
     return(result)
   } else {
-    result[,I/sqrt(se),k][order(V1, decreasing = TRUE),k][1]
+    result[,I/sqrt(get("se")),"k"][order(get("V1"), decreasing = TRUE),get("k")][1]
   }
   
 }
