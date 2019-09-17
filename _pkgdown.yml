@@ -22,8 +22,8 @@ navbar:
       text: Other Packages
       menu:
       - text: FSTrnaseq
-        href: https://www.fstrnaseq.deweybrooke.org/
+        href: https://fstrnaseq.deweybrooke.org/
       - text: GeCKO
-        href: https://www.gecko.deweybrooke.org/
+        href: https://gecko.deweybrooke.org/
       - text: miknn
         href: https://miknn.deweybrooke.org/
