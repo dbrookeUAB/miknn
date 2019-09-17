@@ -1,0 +1,29 @@
+destination: docs
+template:
+      params:
+        bootswatch: yeti
+navbar:
+  structure:
+    left:  [home, intro, reference, articles, tutorials, news]
+    right: [github, packages,main_site, twitter]
+  components:
+     twitter:
+       icon: "fab fa-twitter fa-lg"
+       href: http://twitter.com/deweybrooke1
+     main_site: 
+      icon: "fas fa-user-circle fa-lg"
+      text: Dewey Brooke
+      href: https://www.deweybrooke.org/
+     github: 
+      icon: "fab fa-github fa-lg"
+      href: https://github.com/dbrookeUAB/miknn
+     packages: 
+      icon: "fab fa-r-project fa-lg"
+      text: Other Packages
+      menu:
+      - text: FSTrnaseq
+        href: https://www.fstrnaseq.deweybrooke.org/
+      - text: GeCKO
+        href: https://www.gecko.deweybrooke.org/
+      - text: miknn
+        href: https://miknn.deweybrooke.org/

@@ -16,31 +16,54 @@
 #' # determining I for a series of k
 #' mi_kopt(iris, "Species","Sepal.Length", global = TRUE)
 #' 
-mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE){
+mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE, progress = TRUE){
   suppressWarnings({
     dt <- as.data.table(copy(dt))
     k.series <- c(1:dt[,.N, var.d][which.min(get("N")),get("N")]-1)
-    pb <- progress::progress_bar$new(
-      format = ":percent k = :k [:bar] :elapsed | eta: :eta",
-      total = length(k.series),    # 100 
-      width = 60, clear = TRUE
-    )
+    
+
+# function definitions ----------------------------------------------------
+
+    if(progress){
+      
+      pb <- progress::progress_bar$new(
+        format = ":percent k = :k [:bar] :elapsed | eta: :eta",
+        total = length(k.series),    # 100 
+        width = 60, clear = TRUE
+      )
+      
+      global.p <- function(x){
+        pb$tick(tokens = list(k = x))
+        mi_knn.fast(dt, var.d,var.c, x, output = 'global')
+      }
+      
+      specific.p <- function(x) {
+        pb$tick(tokens = list(k = x))
+        dcast(
+          mi_knn.fast(dt, var.d, var.c, k = x), as.formula(paste0(".~",var.d)), value.var = "I")[,-1]
+      }
+    } else {
+      global.p <- function(x){
+        mi_knn.fast(dt, var.d,var.c, x, output = 'global')
+      }
+      
+      specific.p <- function(x) {
+        dcast(mi_knn.fast(dt, var.d, var.c, k = x),
+              as.formula(paste0(".~",var.d)), value.var = "I")[,-1]
+      }
+    }
+    
+    
+ 
     if(global){
       result <- data.table(k = k.series, 
-                 I = sapply(k.series, function(x){
-                   pb$tick(tokens = list(k = x))
-                   mi_knn(dt, var.d,var.c, x, global = TRUE, FORCE = TRUE)
-                 })
+                 I = sapply(k.series, global.p)
       )[!is.na(I)]
-      result$se <- stats::predict(stats::loess(I~k, result, span = 0.5), se = TRUE)$se
+      result <- cbind(result, as.data.table(stats::predict(stats::loess(I~k, result, span = 0.5), se = TRUE)[1:2]))
     } else {
       result <-data.table(k = k.series, 
                  do.call(rbind,
-                         lapply(k.series, function(x) {
-                           pb$tick(tokens = list(k = x))
-                           dcast(
-                             mi_knn(dt, var.d, var.c, k = x, FORCE = TRUE, global = FALSE), as.formula(paste0(".~",var.d)), value.var = "I")[,-1]
-                         }
+                         lapply(k.series, specific.p
                          )
                  )
       )
@@ -48,10 +71,10 @@ mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE){
   })
   class(result) <- c("mi_kopt",class(result))
   
-  if(!returnK&!global){
+  if(!returnK){
     return(result)
   } else {
-    result[,I/sqrt(get("se")),"k"][order(get("V1"), decreasing = TRUE),get("k")][1]
+    result[,I/sqrt(se.fit),"k"][order(get("V1"), decreasing = TRUE),get("k")][1]
   }
   
 }

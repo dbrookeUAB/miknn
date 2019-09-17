@@ -8,21 +8,25 @@
 
 <title>Determine the Optimum K — mi_kopt • miknn</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -30,10 +34,11 @@
 
 
 
-<meta property="og:title" content="Determine the Optimum K — mi_kopt" />
 
+<meta property="og:title" content="Determine the Optimum K — mi_kopt" />
 <meta property="og:description" content="Determine the Optimum K" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -45,6 +50,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -71,7 +77,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -79,9 +85,46 @@
   <a href="../reference/index.html">Reference</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/dbrookeUAB/miknn">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fab fa fab fa-r-project fa-lg"></span>
+     
+    Other Packages
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="https://www.fstrnaseq.deweybrooke.org/">FSTrnaseq</a>
+    </li>
+    <li>
+      <a href="https://www.gecko.deweybrooke.org/">GeCKO</a>
+    </li>
+    <li>
+      <a href="https://miknn.deweybrooke.org/">miknn</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="https://www.deweybrooke.org/">
+    <span class="fas fa fas fa-user-circle fa-lg"></span>
+     
+    Dewey Brooke
+  </a>
+</li>
+<li>
+  <a href="http://twitter.com/deweybrooke1">
+    <span class="fab fa fab fa-twitter fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -89,6 +132,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -100,13 +144,11 @@
     </div>
 
     <div class="ref-description">
-    
     <p>Determine the Optimum K</p>
-    
     </div>
 
-    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='no'>k.series</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
-    
+    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>returnK</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -123,73 +165,83 @@
       <td><p>the name of the continuouse variable in quotations</p></td>
     </tr>
     <tr>
-      <th>k.series</th>
-      <td><p>a vector of integers to test</p></td>
-    </tr>
-    <tr>
       <th>global</th>
       <td><p>set as TRUE by default. Set to FALSE for specific MI</p></td>
     </tr>
+    <tr>
+      <th>returnK</th>
+      <td><p>set as TRUE to return the 'optimal' k</p></td>
+    </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>miknn</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>miknn</span>)
 
 <span class='co'># determining I for a series of k</span>
-<span class='no'>k.series</span> <span class='kw'>&lt;-</span> <span class='fl'>3</span>:<span class='fl'>40</span>
-<span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='no'>k.series</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt;      k    setosa   versicolor virginica
-#&gt;  1:  3 0.2881540 -0.140780668 0.1577629
-#&gt;  2:  4 0.3785904 -0.003030905 0.2886906
-#&gt;  3:  5 0.3768223 -0.137237213 0.2984398
-#&gt;  4:  6 0.5768223 -0.050051371 0.3000518
-#&gt;  5:  7 0.5883192  0.088622553 0.3256999
-#&gt;  6:  8 0.3667360  0.109475773 0.3057993
-#&gt;  7:  9 0.4531073  0.169644038 0.2902938
-#&gt;  8: 10 0.5019491  0.121563624 0.2917459
-#&gt;  9: 11 0.4202266  0.120678036 0.3452314
-#&gt; 10: 12 0.4380039  0.153275768 0.3319459
-#&gt; 11: 13 0.4954817  0.171291286 0.3460579
-#&gt; 12: 14 0.5446761  0.227789240 0.3772630
-#&gt; 13: 15 0.6103903  0.201195465 0.3737294
-#&gt; 14: 16 0.5585791  0.168909857 0.4225471
-#&gt; 15: 17 0.5907246  0.223310749 0.3833854
-#&gt; 16: 18 0.6495481  0.246513618 0.4186227
-#&gt; 17: 19 0.6559885  0.265112546 0.4223473
-#&gt; 18: 20 0.5852429  0.198957332 0.4274479
-#&gt; 19: 21 0.6189285  0.224173193 0.4412368
-#&gt; 20: 22 0.6250468  0.252585218 0.4009233
-#&gt; 21: 23 0.6317048  0.222417326 0.4133951
-#&gt; 22: 24 0.6493227  0.248821985 0.4279997
-#&gt; 23: 25 0.6630183  0.260019661 0.4402461
-#&gt; 24: 26 0.7030183  0.224121015 0.4030181
-#&gt; 25: 27 0.7182715  0.254892207 0.3860456
-#&gt; 26: 28 0.6946427  0.278328748 0.3979183
-#&gt; 27: 29 0.7039978  0.246776877 0.4224146
-#&gt; 28: 30 0.7024721  0.255830900 0.4491945
-#&gt; 29: 31 0.6788791  0.261605007 0.4272300
-#&gt; 30: 32 0.7030251  0.272122547 0.4022516
-#&gt; 31: 33 0.7303603  0.275068848 0.3994315
-#&gt; 32: 34 0.7252995  0.266289258 0.3955081
-#&gt; 33: 35 0.7418016  0.269087334 0.4127543
-#&gt; 34: 36 0.6977006  0.231143568 0.4178660
-#&gt; 35: 37 0.7254784  0.241055873 0.3900246
-#&gt; 36: 38 0.7179139  0.259246481 0.3813227
-#&gt; 37: 39 0.7200867  0.210870783 0.3518103
-#&gt; 38: 40 0.6729706  0.221324302 0.3639462
-#&gt;      k    setosa   versicolor virginica</div><div class='input'>
+<span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;      k          I         fit     se.fit
+#&gt;  1:  1 -0.9881313 -0.46136032 0.06762495
+#&gt;  2:  2 -0.2344905 -0.30922360 0.05449465
+#&gt;  3:  3  0.1017121 -0.17141004 0.04436158
+#&gt;  4:  4  0.2214167 -0.05009898 0.03756029
+#&gt;  5:  5  0.1793416  0.05386031 0.03394855
+#&gt;  6:  6  0.2756076  0.14282618 0.03287301
+#&gt;  7:  7  0.3342139  0.21943075 0.03343721
+#&gt;  8:  8  0.2606704  0.27731062 0.03446540
+#&gt;  9:  9  0.3043484  0.31665820 0.03536134
+#&gt; 10: 10  0.3050862  0.34993930 0.03609052
+#&gt; 11: 11  0.2953787  0.36303834 0.03604289
+#&gt; 12: 12  0.3077419  0.35386447 0.03664317
+#&gt; 13: 13  0.3376103  0.35292055 0.03761896
+#&gt; 14: 14  0.3832428  0.36615712 0.03663971
+#&gt; 15: 15  0.3951051  0.37880909 0.03663971
+#&gt; 16: 16  0.3833454  0.39030590 0.03761896
+#&gt; 17: 17  0.3991402  0.40127793 0.03663971
+#&gt; 18: 18  0.4382281  0.41192417 0.03663971
+#&gt; 19: 19  0.4478161  0.42102693 0.03761896
+#&gt; 20: 20  0.4038827  0.42699024 0.03663971
+#&gt; 21: 21  0.4281129  0.43070509 0.03663971
+#&gt; 22: 22  0.4261851  0.43468419 0.03761896
+#&gt; 23: 23  0.4225057  0.43852110 0.03663971
+#&gt; 24: 24  0.4420481  0.44113838 0.03663971
+#&gt; 25: 25  0.4544280  0.44404216 0.03761896
+#&gt; 26: 26  0.4433858  0.44799518 0.03663971
+#&gt; 27: 27  0.4530698  0.45212373 0.03663971
+#&gt; 28: 28  0.4569632  0.45547922 0.03761896
+#&gt; 29: 29  0.4577297  0.45882912 0.03663971
+#&gt; 30: 30  0.4691658  0.46237058 0.03663971
+#&gt; 31: 31  0.4559047  0.46429964 0.03761896
+#&gt; 32: 32  0.4591331  0.46464874 0.03663971
+#&gt; 33: 33  0.4682869  0.46427790 0.03663971
+#&gt; 34: 34  0.4623656  0.46262456 0.03761896
+#&gt; 35: 35  0.4745477  0.45985780 0.03663971
+#&gt; 36: 36  0.4489034  0.45620501 0.03663971
+#&gt; 37: 37  0.4521863  0.45119108 0.03761896
+#&gt; 38: 38  0.4528277  0.44552883 0.03664317
+#&gt; 39: 39  0.4275893  0.43915138 0.03604289
+#&gt; 40: 40  0.4194137  0.43041412 0.03609052
+#&gt; 41: 41  0.4166860  0.41940626 0.03536134
+#&gt; 42: 42  0.4153047  0.40689094 0.03446540
+#&gt; 43: 43  0.3998215  0.39223451 0.03343721
+#&gt; 44: 44  0.3770774  0.37542396 0.03287301
+#&gt; 45: 45  0.3639632  0.35678442 0.03394855
+#&gt; 46: 46  0.3555437  0.33618941 0.03756029
+#&gt; 47: 47  0.3173921  0.31352076 0.04436158
+#&gt; 48: 48  0.3053900  0.28881764 0.05449465
+#&gt; 49: 49  0.2288500  0.26218963 0.06762495
+#&gt;      k          I         fit     se.fit</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
 </div>
+
 
       <footer>
       <div class="copyright">
@@ -197,13 +249,16 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

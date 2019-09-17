@@ -3,48 +3,33 @@
 
 using namespace Rcpp;
 
-// [[Rcpp::export(.knn_dist)]]
-double knn_dist(NumericVector y, int knn, int position){
-  int n = y.size();
-  position = position -1;
-  
-  NumericVector x(n);
-  
-  for(int i = 0; i < n; ++i){
-    x[i] = std::abs(y[i] - y[position]);
-  }
-  
-  std::sort(x.begin(), x.end());	// sort x in ascending order
-  
-  return x[knn];
-}
 
 // [[Rcpp::export(.kDistC)]]
 double kDistC(NumericVector y, int knn, int position){
-  int n = y.size();
-  // window size
-  int winStart = 0;                     
-  if (position > knn)
-  {
-    winStart = position - knn;
-  }
+  int n = y.size();                 //  size of the vector
   
+  //----- window start---------------------------------------------------//
+  int winStart = 0;                       
+  if (position > knn)  
+  {
+    winStart = position - knn;    
+  }
+  //----- window end---------------------------------------------------//
   int winEnd = position + knn;
   if (winEnd > n)
   {
-    winEnd = n;
+    winEnd = n;   // fixes the window as it approaches the right
   }
   
-  NumericVector x(winEnd-winStart+1);     // holds distance calculation
-  for(int i = 0; i < winEnd-winStart+1; ++i){
-    x[i] = std::abs(y[i+winStart] - y[position]);
+  //- x holds distance calculation ------------------------------------//
+  std::vector<double> x(winEnd-winStart+1);   // creates a vector the size of the window   
+  // for loop calculates lengths from a fixed position
+  for(int i = 0; i < winEnd-winStart+1; ++i){ 
+    x[i] = std::fabs(y[i+winStart] - y[position]);
   }
-  
   std::sort(x.begin(), x.end());	// sort x in ascending order
-  
-  return x[knn];
+  return x[knn]; // returns the distance of kth nearest neighbor
 }
-
 
 // [[Rcpp::export(.kVector)]]
 NumericVector kVector(NumericVector w, int knn){
@@ -85,6 +70,4 @@ NumericVector neighbors(NumericVector y, NumericVector x){
   }
   return z;
 }
-
-
 

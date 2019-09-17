@@ -5,19 +5,6 @@
 
 using namespace Rcpp;
 
-// knn_dist
-double knn_dist(NumericVector y, int knn, int position);
-RcppExport SEXP _miknn_knn_dist(SEXP ySEXP, SEXP knnSEXP, SEXP positionSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
-    Rcpp::traits::input_parameter< int >::type knn(knnSEXP);
-    Rcpp::traits::input_parameter< int >::type position(positionSEXP);
-    rcpp_result_gen = Rcpp::wrap(knn_dist(y, knn, position));
-    return rcpp_result_gen;
-END_RCPP
-}
 // kDistC
 double kDistC(NumericVector y, int knn, int position);
 RcppExport SEXP _miknn_kDistC(SEXP ySEXP, SEXP knnSEXP, SEXP positionSEXP) {
@@ -57,7 +44,6 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_miknn_knn_dist", (DL_FUNC) &_miknn_knn_dist, 3},
     {"_miknn_kDistC", (DL_FUNC) &_miknn_kDistC, 3},
     {"_miknn_kVector", (DL_FUNC) &_miknn_kVector, 2},
     {"_miknn_neighbors", (DL_FUNC) &_miknn_neighbors, 2},
