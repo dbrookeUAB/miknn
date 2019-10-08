@@ -16,10 +16,19 @@
 #' # determining I for a series of k
 #' mi_kopt(iris, "Species","Sepal.Length", global = TRUE)
 #' 
-mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE, progress = TRUE){
+mi_kopt <- function(dt, var.d, var.c,  global = TRUE, returnK = FALSE, progress = TRUE, k.series = NULL){
   suppressWarnings({
     dt <- as.data.table(copy(dt))
-    k.series <- c(1:dt[,.N, var.d][which.min(get("N")),get("N")]-1)
+    
+    if(is.null(k.series)){
+      n.test <- dt[,.N,var.d][which.min(N),N]
+      if(n.test<100){
+        k.series <- c(1:dt[,.N, var.d][which.min(get("N")),get("N")]-1)
+      } else {
+        k.series <- 1:100
+      }
+    }
+   
     
 
 # function definitions ----------------------------------------------------
