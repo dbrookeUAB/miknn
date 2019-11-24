@@ -21,7 +21,6 @@ navbar:
       icon: "fab fa-r-project fa-lg"
       text: Other Packages
       menu:
-      menu:
       - text: FSTrnaseq
         href: https://fstrnaseq.deweybrooke.org/
       - text: GeCKO
