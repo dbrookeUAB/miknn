@@ -2,6 +2,8 @@
 
 <!-- badges: start -->
 [![Build Status](https://travis-ci.org/https://api.travis-ci.org/dbrookeUAB/dth.svg?branch=master.svg?branch=master)](https://travis-ci.org/https://api.travis-ci.org/dbrookeUAB/dth.svg?branch=master)
+[![Code Size](https://img.shields.io/github/languages/code-size/dbrookeUAB/miknn.svg)](https://github.com/dbrookeUAB/miknn)
+[![Last Commit](https://img.shields.io/github/last-commit/dbrookeUAB/miknn.svg)](https://github.com/dbrookeUAB/miknn/commits/master)
 <!-- badges: end -->
 
 Calculating mutual information between discrete and continuous data sets using kth nearest neighbor algorithm. 
