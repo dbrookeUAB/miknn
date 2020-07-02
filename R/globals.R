@@ -1,1 +1,1 @@
-utils::globalVariables(c("N_x", ".", "distance","m"))
+utils::globalVariables(c("N_x", ".", "distance","m",'N','se.fit'))

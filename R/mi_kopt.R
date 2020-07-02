@@ -5,6 +5,8 @@
 #' @param var.c  the name of the continuouse variable in quotations
 #' @param global  set as TRUE by default. Set to FALSE for specific MI
 #' @param returnK  set as TRUE to return the 'optimal' k
+#' @param progress whether to show a progress bar (DEFAULT=TRUE)
+#' @param k.series the range of integers to scan through (DEFAULT=1:100)
 #'
 #' @return
 #' @export

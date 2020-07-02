@@ -4,7 +4,8 @@
 \alias{mi_kopt}
 \title{Determine the Optimum K}
 \usage{
-mi_kopt(dt, var.d, var.c, global = TRUE, returnK = FALSE)
+mi_kopt(dt, var.d, var.c, global = TRUE, returnK = FALSE,
+  progress = TRUE, k.series = NULL)
 }
 \arguments{
 \item{dt}{a data.frame object}
@@ -16,6 +17,10 @@ mi_kopt(dt, var.d, var.c, global = TRUE, returnK = FALSE)
 \item{global}{set as TRUE by default. Set to FALSE for specific MI}
 
 \item{returnK}{set as TRUE to return the 'optimal' k}
+
+\item{progress}{whether to show a progress bar (DEFAULT=TRUE)}
+
+\item{k.series}{the range of integers to scan through (DEFAULT=1:100)}
 }
 \description{
 Determine the Optimum K

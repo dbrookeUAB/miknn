@@ -8,6 +8,7 @@
 #' @param FORCE  set to TRUE continues despite not using an optimum k
 #' @param global set to FALSE to get specific MI
 #' @param quite  set to TRUE to prevent messages being displayed to the console
+#' @param debug  experimental
 #' @import data.table
 #' @importFrom Rcpp evalCpp
 #' @useDynLib miknn, .registration=TRUE
@@ -34,10 +35,10 @@
 #' res <- mi_knn(dt = gene_exp, var.d = "project", var.c = "CCND1", global = FALSE)
 #' plot(res)
 #' 
-mi_knn <- function(dt, var.d, var.c, k = NULL, 
-                    warnings = TRUE, FORCE = TRUE, global = TRUE, quite = FALSE, nthreads = 1) {
-  df <- as.data.table(copy(dt))
-  setkeyv(df, var.c)
+mi_knn.mod <- function(dt, var.d, var.c, k = NULL, 
+                   warnings = TRUE, FORCE = TRUE, global = TRUE, quite = FALSE, debug = FALSE) {
+  df <- data.table::as.data.table( data.table::copy(dt))
+  data.table::setkeyv(df, var.c)
   
   # subsetting and parameter determination ----------------------------------
   num_zeros <- sum(df[[var.c]] == 0)
@@ -46,72 +47,48 @@ mi_knn <- function(dt, var.d, var.c, k = NULL,
     k <- .kmax(df, var.d, var.c)    # determine the highest possible k
     if(!quite){message(paste("Using k =", k))}}
   
-  if(num_zeros>0){
-    remove_zero <- df[[var.c]] != 0    # creates a T/F vector for subsetting the data.table
-    df <- df[remove_zero,]}             # subsets data.table 
   n <- length(df[[var.d]])                  # used later for calculating I 
   df[ ,N_x:= length(get(var.c)), var.d]     # adds a column for group size
   
   # errors and warning messages ---------------------------------------------
   
   # checking if k was set to a value larger than the smallest group size
-  if (nrow(df[, .(N_x = unique(N_x)), var.d][N_x < k]) != 0 & !FORCE) { 
+  if (nrow(df[, .(N_x = unique(N_x)), var.d][N_x < k]) != 0 & !FORCE) {
     stop("group smaller than k: decrease k, consider setting k = NULL, or set FORCE = TRUE", call. = FALSE)}
-  
-  # warning message for the number of data points equal to 0
-  if (num_zeros > 0 & warnings) {
-    num_not_zeros <- sum(dt[[var.c]] != 0)
-    warning(paste(num_zeros, "points in the vector named", var.c,
-                  "have 0 as their value. Running calculation on the remaining",
-                  num_not_zeros,"data points"))}
-  
+
   # distance to kth nearest neighbor ----------------------------------------
-  df[,distance:= .kVector(get(var.c), k, nthreads = nthreads), var.d]
-  df$m <- .neighbors(df[[var.c]], df[['distance']])
+  if (num_zeros > 0 ) {
+    df[,type:=data.table::fifelse(get(var.c)==0, 'd','c')]
+    df[type=='d',m:=.N]
+    df[type=='d',ki:=.N,var.d]
+    df[type=='c',ki:=k]
+    df[type=='c',distance:= .kVector(get(var.c), k), var.d]
+    df[type=='c', m:=.neighbors(get(var.c), distance)]
+    df[, I:=digamma(n)- digamma(N_x)+digamma(ki)-digamma(m)]
+    df[type=='c', I:=digamma(n-num_zeros)- digamma(N_x)+digamma(ki)-digamma(m)]
+  } else {
+    df[,distance:= .kVector(get(var.c), k), var.d]
+    df[, m:=.neighbors(get(var.c), distance)]
+    df[, I:=digamma(n)- digamma(N_x)+digamma(k)-digamma(m)]
+
+    }
   
   # mutual information calculation ------------------------------------------
   if(!global){
     df_final <-
-      df[, .(I = digamma(n) - mean(digamma(N_x)) + digamma(k) - mean(digamma(m))), var.d]
+      df[, .(I = mean(I)), var.d]
+    setkeyv(df_final, var.d)
     class(df_final) <- c("specific_mi",class(df_final))
   } else {
-    df_final <- df[,  digamma(n) - mean(digamma(N_x)) + digamma(k) - mean(digamma(m))]
+    df_final <- df[,  mean(I)]
     class(df_final) <- "global_mi"
   }
   base::attr(df_final,"k") <- k
-  
-  return(df_final)
+  if(debug){
+    return(df)
+  } else(
+    return(df_final)
+  )
 }
 
-#' print.global_mi
-#'
-#' @param x an mi result
-#' @param ... For the "function" method of plot, ... can include any of the other arguments of curve, except expr.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-print.global_mi <- function(x,...){
-  base::attributes(x) <- NULL
-  base::print(x,...)
-}
-  
-#' plot.specific_mi
-#'
-#' @param x  a result from mi_knn(dt, var.d,var.d, global = FALSE)
-#' @param ... For the "function" method of plot, ... can include any of the other arguments of curve, except expr.
-#'
-#' @return
-#' @export
-#'
-#' @examples
-plot.specific_mi <- function(x,...){
-  graphics::par(mar=c(5,8,4,2)) # increase y-axis margin.
-  graphics::par(las=2)
-  x<- x[base::order(x[[1]])]
-  graphics::barplot(x[,I],names  = x[[1]],
-          cex.names=0.8, ylab = "Mutual Information (bits)",...)
-}
-  
-  
+

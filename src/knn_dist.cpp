@@ -1,44 +1,79 @@
 #include <Rcpp.h>
 #include <cmath>        // std::abs
+#include <algorithm>    // std::execution
+#ifdef _OPENMP
+  #include <omp.h>
+#endif
 
 using namespace Rcpp;
-
-
-// [[Rcpp::export(.kDistC)]]
-double kDistC(NumericVector y, int knn, int position){
-  int n = y.size();                 //  size of the vector
-  
-  //----- window start---------------------------------------------------//
-  int winStart = 0;                       
-  if (position > knn)  
-  {
-    winStart = position - knn;    
-  }
-  //----- window end---------------------------------------------------//
-  int winEnd = position + knn;
-  if (winEnd > n)
-  {
-    winEnd = n;   // fixes the window as it approaches the right
-  }
-  
-  //- x holds distance calculation ------------------------------------//
-  std::vector<double> x(winEnd-winStart+1);   // creates a vector the size of the window   
-  // for loop calculates lengths from a fixed position
-  for(int i = 0; i < winEnd-winStart+1; ++i){ 
-    x[i] = std::fabs(y[i+winStart] - y[position]);
-  }
-  std::sort(x.begin(), x.end());	// sort x in ascending order
-  return x[knn]; // returns the distance of kth nearest neighbor
-}
+// [[Rcpp::plugins(openmp)]]
 
 // [[Rcpp::export(.kVector)]]
-NumericVector kVector(NumericVector w, int knn){
+std::vector<double> kVector(std::vector<double> w, int knn, int nthreads=1){
   int n = w.size();
-  NumericVector z(n);
+  std::vector<double> z(n);
   
+#pragma omp parallel for num_threads(nthreads) 
   for (int i = 0; i < n; i++){
-    z[i] = kDistC(w, knn, i);
+    //----- window start---------------------------------------------------//
+    int winStart = 0;                       
+    if (i > knn)  
+    {
+      winStart = i - knn;    
+    }
+    //----- window end---------------------------------------------------//
+    int winEnd = i + knn;
+    if (winEnd > w.size())
+    {
+      winEnd = w.size();   // fixes the window as it approaches the right
+    }
+    
+    //- x holds distance calculation ------------------------------------//
+    std::vector<double> x(winEnd-winStart+1);   // creates a vector the size of the window   
+    
+    // for loop calculates lengths from a fixed position
+    for(int j = 0; j < winEnd-winStart+1; ++j){ 
+      x[j] = std::fabs(w[j+winStart] - w[i]);
+    }
+    std::sort(x.begin(), x.end());	// sort x in ascending order
+    z[i] = x[knn]; // returns the distance of kth nearest neighbor
   }
+  
+  return(z);
+}
+
+
+// [[Rcpp::export(kVector)]]
+std::vector<double> kVector2(std::vector<double> w, int knn, int nthreads=1){
+  int n = w.size();
+  std::vector<double> z(n);
+  
+#pragma omp parallel for num_threads(nthreads) 
+  for (int i = 0; i < n; i++){
+    //----- window start---------------------------------------------------//
+    int winStart = 0;                       
+    if (i > knn)  
+    {
+      winStart = i - knn;    
+    }
+    //----- window end---------------------------------------------------//
+    int winEnd = i + knn;
+    if (winEnd > w.size())
+    {
+      winEnd = w.size();   // fixes the window as it approaches the right
+    }
+    
+    //- x holds distance calculation ------------------------------------//
+    std::vector<double> x(winEnd-winStart+1);   // creates a vector the size of the window   
+    
+    // for loop calculates lengths from a fixed position
+    for(int j = 0; j < winEnd-winStart+1; ++j){ 
+      x[j] = std::fabs(w[j+winStart] - w[i]);
+    }
+    std::sort(x.begin(), x.end());	// sort x in ascending order
+    z[i] = x[knn]; // returns the distance of kth nearest neighbor
+  }
+  
   return(z);
 }
 

@@ -5,28 +5,29 @@
 
 using namespace Rcpp;
 
-// kDistC
-double kDistC(NumericVector y, int knn, int position);
-RcppExport SEXP _miknn_kDistC(SEXP ySEXP, SEXP knnSEXP, SEXP positionSEXP) {
+// kVector
+std::vector<double> kVector(std::vector<double> w, int knn, int nthreads);
+RcppExport SEXP _miknn_kVector(SEXP wSEXP, SEXP knnSEXP, SEXP nthreadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type w(wSEXP);
     Rcpp::traits::input_parameter< int >::type knn(knnSEXP);
-    Rcpp::traits::input_parameter< int >::type position(positionSEXP);
-    rcpp_result_gen = Rcpp::wrap(kDistC(y, knn, position));
+    Rcpp::traits::input_parameter< int >::type nthreads(nthreadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(kVector(w, knn, nthreads));
     return rcpp_result_gen;
 END_RCPP
 }
-// kVector
-NumericVector kVector(NumericVector w, int knn);
-RcppExport SEXP _miknn_kVector(SEXP wSEXP, SEXP knnSEXP) {
+// kVector2
+std::vector<double> kVector2(std::vector<double> w, int knn, int nthreads);
+RcppExport SEXP _miknn_kVector2(SEXP wSEXP, SEXP knnSEXP, SEXP nthreadsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type w(wSEXP);
+    Rcpp::traits::input_parameter< std::vector<double> >::type w(wSEXP);
     Rcpp::traits::input_parameter< int >::type knn(knnSEXP);
-    rcpp_result_gen = Rcpp::wrap(kVector(w, knn));
+    Rcpp::traits::input_parameter< int >::type nthreads(nthreadsSEXP);
+    rcpp_result_gen = Rcpp::wrap(kVector2(w, knn, nthreads));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -44,8 +45,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_miknn_kDistC", (DL_FUNC) &_miknn_kDistC, 3},
-    {"_miknn_kVector", (DL_FUNC) &_miknn_kVector, 2},
+    {"_miknn_kVector", (DL_FUNC) &_miknn_kVector, 3},
+    {"_miknn_kVector2", (DL_FUNC) &_miknn_kVector2, 3},
     {"_miknn_neighbors", (DL_FUNC) &_miknn_neighbors, 2},
     {NULL, NULL, 0}
 };
