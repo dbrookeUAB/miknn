@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Mutual Information Calculation — mi_knn" />
 <meta property="og:description" content="Mutual Information Calculation" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -209,9 +212,9 @@
 #&gt; 11092: TCGA-CHOL TCGA-ZU-A8S4-11A-11R-A41I-07   8165.676    0.00000
 #&gt; 11093: TCGA-CESC TCGA-ZX-AA5X-01A-11R-A42T-07  26487.175  128.18321</div><div class='input'>
 <span class='co'># basic example using k = 10</span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.3253909</div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.325383</div><div class='input'>
 <span class='co'># the function can decide the optimum k</span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3270684</div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3269272</div><div class='input'>
 <span class='co'># set global = FALSE to get the specific MI for each levels,  </span>
 <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt;       project           I
 #&gt;  1:  TCGA-LGG 1.034932598
@@ -219,7 +222,7 @@
 #&gt;  3: TCGA-LAML 0.763923231
 #&gt;  4: TCGA-KIRC 0.230196889
 #&gt;  5:  TCGA-GBM 0.413664786
-#&gt;  6: TCGA-LIHC 1.072847620
+#&gt;  6: TCGA-LIHC 1.071839710
 #&gt;  7:  TCGA-ACC 0.164198321
 #&gt;  8: TCGA-PCPG 0.446545949
 #&gt;  9: TCGA-SKCM 0.415979893
@@ -235,30 +238,27 @@
 #&gt; 19:  TCGA-UCS 0.018002765
 #&gt; 20: TCGA-UCEC 0.196090020
 #&gt; 21: TCGA-KICH 0.497103676
-#&gt; 22: TCGA-DLBC 0.494721088
+#&gt; 22: TCGA-DLBC 0.490689319
 #&gt; 23: TCGA-ESCA 0.043721798
-#&gt; 24: TCGA-HNSC 0.308234196
+#&gt; 24: TCGA-HNSC 0.306581393
 #&gt; 25: TCGA-CESC 0.079623854
-#&gt; 26: TCGA-COAD 0.147225615
+#&gt; 26: TCGA-COAD 0.146442319
 #&gt; 27: TCGA-TGCT 0.257127782
 #&gt; 28: TCGA-PAAD 0.183207432
-#&gt; 29: TCGA-PRAD 0.198873155
+#&gt; 29: TCGA-PRAD 0.198779785
 #&gt; 30:   TCGA-OV 0.086728308
 #&gt; 31: TCGA-THYM 0.257791461
 #&gt; 32:  TCGA-UVM 0.347631099
 #&gt; 33: TCGA-THCA 0.727007615
 #&gt;       project           I</div><div class='input'>
 <span class='co'># generating a plot for specific MI</span>
-<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>res</span>)</div><div class='img'><img src='mi_knn-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>res</span> <span class='kw'>&lt;-</span> <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/plot.html'>plot</a></span>(<span class='no'>res</span>)</div><div class='img'><img src='mi_knn-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -269,7 +269,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

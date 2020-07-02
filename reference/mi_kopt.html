@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Determine the Optimum K — mi_kopt" />
 <meta property="og:description" content="Determine the Optimum K" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -150,7 +153,8 @@
     <p>Determine the Optimum K</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>returnK</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>returnK</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>progress</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>k.series</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,6 +179,14 @@
       <th>returnK</th>
       <td><p>set as TRUE to return the 'optimal' k</p></td>
     </tr>
+    <tr>
+      <th>progress</th>
+      <td><p>whether to show a progress bar (DEFAULT=TRUE)</p></td>
+    </tr>
+    <tr>
+      <th>k.series</th>
+      <td><p>the range of integers to scan through (DEFAULT=1:100)</p></td>
+    </tr>
     </table>
 
 
@@ -183,65 +195,62 @@
 
 <span class='co'># determining I for a series of k</span>
 <span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;      k          I         fit     se.fit
-#&gt;  1:  1 -0.9881313 -0.46174017 0.06762311
-#&gt;  2:  2 -0.2344905 -0.30937436 0.05449316
-#&gt;  3:  3  0.1017121 -0.17135079 0.04436038
-#&gt;  4:  4  0.2214167 -0.04985165 0.03755927
-#&gt;  5:  5  0.1793416  0.05427068 0.03394763
-#&gt;  6:  6  0.2756076  0.14337727 0.03287211
-#&gt;  7:  7  0.3342139  0.22010611 0.03343630
-#&gt;  8:  8  0.2606704  0.27809070 0.03446446
-#&gt;  9:  9  0.3043484  0.31752237 0.03536038
-#&gt; 10: 10  0.3131454  0.35087583 0.03608954
-#&gt; 11: 11  0.2953787  0.36405268 0.03604191
-#&gt; 12: 12  0.3077419  0.35495246 0.03664217
-#&gt; 13: 13  0.3376103  0.35404676 0.03761794
-#&gt; 14: 14  0.3832428  0.36713243 0.03663872
-#&gt; 15: 15  0.3951051  0.37949660 0.03663872
-#&gt; 16: 16  0.3833454  0.39084632 0.03761794
-#&gt; 17: 17  0.3991402  0.40174323 0.03663872
-#&gt; 18: 18  0.4447332  0.41229669 0.03663872
-#&gt; 19: 19  0.4478161  0.42153537 0.03761794
-#&gt; 20: 20  0.4038827  0.42821381 0.03663872
-#&gt; 21: 21  0.4281129  0.43296937 0.03663872
-#&gt; 22: 22  0.4261851  0.43765486 0.03761794
-#&gt; 23: 23  0.4225057  0.44192914 0.03663872
-#&gt; 24: 24  0.4420481  0.44502997 0.03663872
-#&gt; 25: 25  0.4544280  0.44817852 0.03761794
-#&gt; 26: 26  0.4756380  0.45206898 0.03663872
-#&gt; 27: 27  0.4530698  0.45600785 0.03663872
-#&gt; 28: 28  0.4569632  0.45913471 0.03761794
-#&gt; 29: 29  0.4577297  0.46164821 0.03663872
-#&gt; 30: 30  0.4691658  0.46385605 0.03663872
-#&gt; 31: 31  0.4559047  0.46506144 0.03761794
-#&gt; 32: 32  0.4591331  0.46545856 0.03663872
-#&gt; 33: 33  0.4682869  0.46528053 0.03663872
-#&gt; 34: 34  0.4623656  0.46388890 0.03761794
-#&gt; 35: 35  0.4745477  0.46188592 0.03663872
-#&gt; 36: 36  0.4489034  0.45947494 0.03663872
-#&gt; 37: 37  0.4521863  0.45541910 0.03761794
-#&gt; 38: 38  0.4528277  0.45027388 0.03664217
-#&gt; 39: 39  0.4686375  0.44436046 0.03604191
-#&gt; 40: 40  0.4194137  0.43609050 0.03608954
-#&gt; 41: 41  0.4166860  0.42550541 0.03536038
-#&gt; 42: 42  0.4153047  0.41336513 0.03446446
-#&gt; 43: 43  0.3998215  0.39915904 0.03343630
-#&gt; 44: 44  0.3770774  0.38287653 0.03287211
-#&gt; 45: 45  0.3945613  0.36478213 0.03394763
-#&gt; 46: 46  0.3555437  0.34477794 0.03755927
-#&gt; 47: 47  0.3173921  0.32277522 0.04436038
-#&gt; 48: 48  0.3053900  0.29880494 0.05449316
-#&gt; 49: 49  0.2545281  0.27294875 0.06762311
+#&gt;  1:  1 -0.9881313 -0.46126821 0.06762042
+#&gt;  2:  2 -0.2344905 -0.30917756 0.05449100
+#&gt;  3:  3  0.1017121 -0.17140236 0.04435861
+#&gt;  4:  4  0.2214167 -0.05012488 0.03755778
+#&gt;  5:  5  0.1793416  0.05380346 0.03394628
+#&gt;  6:  6  0.2756076  0.14274409 0.03287081
+#&gt;  7:  7  0.3342139  0.21933397 0.03343497
+#&gt;  8:  8  0.2606704  0.27720131 0.03446309
+#&gt;  9:  9  0.3043484  0.31653824 0.03535898
+#&gt; 10: 10  0.3050862  0.34982761 0.03608810
+#&gt; 11: 11  0.2953787  0.36289239 0.03604048
+#&gt; 12: 12  0.3077419  0.35364855 0.03664072
+#&gt; 13: 13  0.3376103  0.35271849 0.03761645
+#&gt; 14: 14  0.3832428  0.36610522 0.03663726
+#&gt; 15: 15  0.3951051  0.37897331 0.03663726
+#&gt; 16: 16  0.3833454  0.39068749 0.03761645
+#&gt; 17: 17  0.4001162  0.40201241 0.03663726
+#&gt; 18: 18  0.4382281  0.41313314 0.03663726
+#&gt; 19: 19  0.4478161  0.42254500 0.03761645
+#&gt; 20: 20  0.4038827  0.42866297 0.03663726
+#&gt; 21: 21  0.4281129  0.43252549 0.03663726
+#&gt; 22: 22  0.4400187  0.43656306 0.03761645
+#&gt; 23: 23  0.4225057  0.44029625 0.03663726
+#&gt; 24: 24  0.4420481  0.44270733 0.03663726
+#&gt; 25: 25  0.4544280  0.44541938 0.03761645
+#&gt; 26: 26  0.4433858  0.44905704 0.03663726
+#&gt; 27: 27  0.4530698  0.45271673 0.03663726
+#&gt; 28: 28  0.4569632  0.45572921 0.03761645
+#&gt; 29: 29  0.4577297  0.45885749 0.03663726
+#&gt; 30: 30  0.4691658  0.46217376 0.03663726
+#&gt; 31: 31  0.4559047  0.46397260 0.03761645
+#&gt; 32: 32  0.4591331  0.46440896 0.03663726
+#&gt; 33: 33  0.4682869  0.46426475 0.03663726
+#&gt; 34: 34  0.4623656  0.46277502 0.03761645
+#&gt; 35: 35  0.4750686  0.46012318 0.03663726
+#&gt; 36: 36  0.4489034  0.45662396 0.03663726
+#&gt; 37: 37  0.4521863  0.45170931 0.03761645
+#&gt; 38: 38  0.4528277  0.44608253 0.03664072
+#&gt; 39: 39  0.4275893  0.43972548 0.03604048
+#&gt; 40: 40  0.4239154  0.43098796 0.03608810
+#&gt; 41: 41  0.4166860  0.41996018 0.03535898
+#&gt; 42: 42  0.4153047  0.40740792 0.03446309
+#&gt; 43: 43  0.3998215  0.39269439 0.03343497
+#&gt; 44: 44  0.3770774  0.37580673 0.03287081
+#&gt; 45: 45  0.3639632  0.35707117 0.03394628
+#&gt; 46: 46  0.3555437  0.33635947 0.03755778
+#&gt; 47: 47  0.3173921  0.31355322 0.04435861
+#&gt; 48: 48  0.3053900  0.28869288 0.05449100
+#&gt; 49: 49  0.2288500  0.26188854 0.06762042
 #&gt;      k          I         fit     se.fit</div><div class='input'>
 </div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -252,7 +261,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
