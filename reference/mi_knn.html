@@ -90,7 +90,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dbrookeUAB/miknn">
+  <a href="https://github.com/dbrookeUAB/GeCKO">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -105,7 +105,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="https://fstrnaseq.deweybrooke.org/">FSTrnaseq</a>
+      <a href="https://tcgaseq.deweybrooke.org/">TCGAseq</a>
+    </li>
+    <li>
+      <a href="https://gtexseq.deweybrooke.org/">GTEXseq</a>
     </li>
     <li>
       <a href="https://gecko.deweybrooke.org/">GeCKO</a>
@@ -214,7 +217,7 @@
 <span class='co'># basic example using k = 10</span>
 <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.325383</div><div class='input'>
 <span class='co'># the function can decide the optimum k</span>
-<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3269272</div><div class='input'>
+<span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3269829</div><div class='input'>
 <span class='co'># set global = FALSE to get the specific MI for each levels,  </span>
 <span class='fu'>mi_knn</span>(<span class='kw'>dt</span> <span class='kw'>=</span> <span class='no'>gene_exp</span>, <span class='kw'>var.d</span> <span class='kw'>=</span> <span class='st'>"project"</span>, <span class='kw'>var.c</span> <span class='kw'>=</span> <span class='st'>"CCND1"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt;       project           I
 #&gt;  1:  TCGA-LGG 1.034932598
@@ -240,7 +243,7 @@
 #&gt; 21: TCGA-KICH 0.497103676
 #&gt; 22: TCGA-DLBC 0.490689319
 #&gt; 23: TCGA-ESCA 0.043721798
-#&gt; 24: TCGA-HNSC 0.306581393
+#&gt; 24: TCGA-HNSC 0.306712915
 #&gt; 25: TCGA-CESC 0.079623854
 #&gt; 26: TCGA-COAD 0.146442319
 #&gt; 27: TCGA-TGCT 0.257127782
