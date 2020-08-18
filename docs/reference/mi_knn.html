@@ -90,7 +90,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dbrookeUAB/GeCKO">
+  <a href="https://github.com/dbrookeUAB/miknn">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -215,9 +215,9 @@
 #&gt; 11092: TCGA-CHOL TCGA-ZU-A8S4-11A-11R-A41I-07   8165.676    0.00000
 #&gt; 11093: TCGA-CESC TCGA-ZX-AA5X-01A-11R-A42T-07  26487.175  128.18321</div><div class='input'>
 <span class='co'># basic example using k = 10</span>
-<span class='fu'>mi_knn</span>(dt = <span class='kw'>gene_exp</span>, var.d = <span class='st'>"project"</span>, k = <span class='fl'>10</span>, var.c = <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.3254369</div><div class='input'>
+<span class='fu'>mi_knn</span>(dt = <span class='kw'>gene_exp</span>, var.d = <span class='st'>"project"</span>, k = <span class='fl'>10</span>, var.c = <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; [1] 0.3254631</div><div class='input'>
 <span class='co'># the function can decide the optimum k</span>
-<span class='fu'>mi_knn</span>(dt = <span class='kw'>gene_exp</span>, var.d = <span class='st'>"project"</span>, var.c = <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3270718</div><div class='input'>
+<span class='fu'>mi_knn</span>(dt = <span class='kw'>gene_exp</span>, var.d = <span class='st'>"project"</span>, var.c = <span class='st'>"CCND1"</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt; [1] 0.3269373</div><div class='input'>
 <span class='co'># set global = FALSE to get the specific MI for each levels,  </span>
 <span class='fu'>mi_knn</span>(dt = <span class='kw'>gene_exp</span>, var.d = <span class='st'>"project"</span>, var.c = <span class='st'>"CCND1"</span>, global = <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Using k = 20</span></div><div class='output co'>#&gt;       project           I
 #&gt;  1:  TCGA-LGG 1.034932598
@@ -236,17 +236,17 @@
 #&gt; 14: TCGA-MESO 0.004023886
 #&gt; 15: TCGA-KIRP 0.248888976
 #&gt; 16: TCGA-BRCA 0.162451328
-#&gt; 17: TCGA-CHOL 0.494085871
+#&gt; 17: TCGA-CHOL 0.473926908
 #&gt; 18: TCGA-READ 0.267617116
-#&gt; 19:  TCGA-UCS 0.019855650
+#&gt; 19:  TCGA-UCS 0.018002765
 #&gt; 20: TCGA-UCEC 0.196090020
 #&gt; 21: TCGA-KICH 0.497103676
 #&gt; 22: TCGA-DLBC 0.490689319
-#&gt; 23: TCGA-ESCA 0.043721798
+#&gt; 23: TCGA-ESCA 0.048211049
 #&gt; 24: TCGA-HNSC 0.306581393
 #&gt; 25: TCGA-CESC 0.079623854
 #&gt; 26: TCGA-COAD 0.146442319
-#&gt; 27: TCGA-TGCT 0.258722656
+#&gt; 27: TCGA-TGCT 0.257127782
 #&gt; 28: TCGA-PAAD 0.183207432
 #&gt; 29: TCGA-PRAD 0.198779785
 #&gt; 30:   TCGA-OV 0.086728308
