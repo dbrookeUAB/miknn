@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/yeti/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,6 @@
 
 <meta property="og:title" content="Determine the Optimum K — mi_kopt" />
 <meta property="og:description" content="Determine the Optimum K" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -55,7 +58,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -87,7 +90,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/dbrookeUAB/miknn">
+  <a href="https://github.com/dbrookeUAB/GeCKO">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -102,13 +105,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="https://fstrnaseq.deweybrooke.org/">FSTrnaseq</a>
+      <a href="https://tcgaseq.deweybrooke.org/">TCGAseq</a>
+    </li>
+    <li>
+      <a href="https://gtexseq.deweybrooke.org/">GTEXseq</a>
     </li>
     <li>
       <a href="https://gecko.deweybrooke.org/">GeCKO</a>
     </li>
     <li>
       <a href="https://miknn.deweybrooke.org/">miknn</a>
+    </li>
+    <li>
+      <a href="https://dth.deweybrooke.org/">dth</a>
     </li>
   </ul>
 </li>
@@ -147,7 +156,8 @@
     <p>Determine the Optimum K</p>
     </div>
 
-    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='no'>dt</span>, <span class='no'>var.d</span>, <span class='no'>var.c</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>returnK</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>mi_kopt</span>(<span class='kw'>dt</span>, <span class='kw'>var.d</span>, <span class='kw'>var.c</span>, global = <span class='fl'>TRUE</span>, returnK = <span class='fl'>FALSE</span>,
+  progress = <span class='fl'>TRUE</span>, k.series = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -172,14 +182,22 @@
       <th>returnK</th>
       <td><p>set as TRUE to return the 'optimal' k</p></td>
     </tr>
+    <tr>
+      <th>progress</th>
+      <td><p>whether to show a progress bar (DEFAULT=TRUE)</p></td>
+    </tr>
+    <tr>
+      <th>k.series</th>
+      <td><p>the range of integers to scan through (DEFAULT=1:100)</p></td>
+    </tr>
     </table>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>miknn</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>miknn</span>)
 
 <span class='co'># determining I for a series of k</span>
-<span class='fu'>mi_kopt</span>(<span class='no'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, <span class='kw'>global</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;      k          I         fit     se.fit
+<span class='fu'>mi_kopt</span>(<span class='kw'>iris</span>, <span class='st'>"Species"</span>,<span class='st'>"Sepal.Length"</span>, global = <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;      k          I         fit     se.fit
 #&gt;  1:  1 -0.9881313 -0.46136032 0.06762495
 #&gt;  2:  2 -0.2344905 -0.30922360 0.05449465
 #&gt;  3:  3  0.1017121 -0.17141004 0.04436158
@@ -229,16 +247,12 @@
 #&gt; 47: 47  0.3173921  0.31352076 0.04436158
 #&gt; 48: 48  0.3053900  0.28881764 0.05449465
 #&gt; 49: 49  0.2288500  0.26218963 0.06762495
-#&gt;      k          I         fit     se.fit</div><div class='input'>
-</div></pre>
+#&gt;      k          I         fit     se.fit</div><div class='input'></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -249,7 +263,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
